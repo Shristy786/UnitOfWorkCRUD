@@ -1,0 +1,29 @@
+﻿@model UnitOfWorkCRUD.Models.Course
+
+@{
+    ViewData["Title"] = "Edit Course";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <form asp-action="EditCourse">
+                <div class="form-group" hidden>
+                    <label asp-for="id" class="control-label"></label>
+                    <input asp-for="id" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="CourseName" class="control-label"></label>
+                    <input asp-for="CourseName" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="AnnualFee" class="control-label"></label>
+                    <input asp-for="AnnualFee" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Update</button>>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
