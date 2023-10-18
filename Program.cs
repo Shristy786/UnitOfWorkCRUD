@@ -1,7 +1,19 @@
+using Microsoft.EntityFrameworkCore;
+using UnitOfWorkCRUD.Data;
+using UnitOfWorkCRUD.Repository;
+using UnitOfWorkCRUD.UnitOfWork;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<StudentDBContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("StudentConnectionstring"));
+});
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
 
 var app = builder.Build();
 

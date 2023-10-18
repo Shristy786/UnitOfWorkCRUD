@@ -1,0 +1,43 @@
+﻿@model IEnumerable<UnitOfWorkCRUD.Models.Course>
+
+@{
+    ViewData["Title"] = "List of Courses";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-10 offset-1">
+            <table class="table table-dark table-striped-columns">
+                <thead class="text-center bg-dark text-light">
+                    <tr>
+                        <th>ID</th>
+                        <th>CourseName</th>
+                        <th>Annual Fees</th>
+                        <th>EDit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var course in Model)
+                    {
+                        <tr>
+                            <td class="text-center">@course.id</td>
+                            <td class="text-center">@course.CourseName</td>
+                            <td class="text-center">@course.AnnualFee</td>
+                            <td>
+
+                                <a href="/Course/EditCourse?Id=@course.id">Edit</a>
+                            </td>
+                            <td>
+                                <a href="/Course/DeleteCourse?Id=@course.id">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <a asp-action="AddNewCourse" class="btn btn-sm btn btn-primary">Add new Course</a>
+        </div>
+    </div>
+
+</div>
