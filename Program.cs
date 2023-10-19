@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using UnitOfWorkCRUD.Data;
 using UnitOfWorkCRUD.Repository;
+using UnitOfWorkCRUD.Services;
 using UnitOfWorkCRUD.UnitOfWork;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +14,10 @@ builder.Services.AddDbContext<StudentDBContext>(options =>
 });
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IStudentService, StudentService>();  
+
+//Adding Automapper
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 
 var app = builder.Build();

@@ -15,20 +15,21 @@ namespace UnitOfWorkCRUD.Repository
             _studentDBContext = studentDBContext;
             _dbSet = _studentDBContext.Set<T>();
         }
-
-        public void Add(T entity)
-        {
-            _studentDBContext.Set<T>().Add(entity);
-
-            
-        }
-
         public IEnumerable<T> GetAll()
         {
             var students = _dbSet.ToList();
             return students;
 
         }
+
+        public void Add(T entity)
+        {
+            _dbSet.Add(entity);
+
+            
+        }
+
+       
 
         public T GetById(int id)
         {
