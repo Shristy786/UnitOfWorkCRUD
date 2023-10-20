@@ -28,41 +28,41 @@ namespace UnitOfWorkCRUD.Controllers
             return View(studentsDTO);
         }
 
-        //[HttpGet]
-        //public IActionResult AddNewStudent()
-        //{
-        //    return View();
-        //}
+        [HttpGet]
+        public IActionResult AddNewStudent()
+        {
+            return View();
+        }
 
-        //[HttpPost]
-        //public IActionResult AddNewStudent(Student student)
-        //{
-        //    _studentRepository.Add(student);
-        //    _unitOfWork.Commit();
-        //    return Redirect("GetAllStudents");
-        //}
+        [HttpPost]
+        public IActionResult AddNewStudent(StudentDTO studentDTO)
+        {
+            _studentService.AddNewStudent(studentDTO);
+            _unitOfWork.Commit();
+            return Redirect("GetAllStudents");
+        }
 
-        //[HttpGet]
-        //public IActionResult EditStudent(int id)
-        //{
-        //    var student = _studentRepository.GetById(id);
-        //    return View(student);
-        //}
+        [HttpGet]
+        public IActionResult EditStudent(int id)
+        {
+            StudentDTO studentDTO = _studentService.GetById(id);
+            return View(studentDTO);
+        }
 
-        //[HttpPost]
-        //public IActionResult EditStudent(Student student)
-        //{
-        //  _studentRepository.Update(student);
-        //    _unitOfWork.Commit();
-        //    return Redirect("GetAllStudents");
-        //}
+        [HttpPost]
+        public IActionResult EditStudent(StudentDTO studentDTO)
+        {
+            _studentService.UpdateStudent(studentDTO);
+            _unitOfWork.Commit();
+            return Redirect("GetAllStudents");
+        }
 
-        //public IActionResult DeleteStudent(int id)
-        //{
-        //    _studentRepository.Delete(id);
-        //    _unitOfWork.Commit();
-        //    return Redirect("GetAllStudents");
-        //}
+        public IActionResult DeleteStudent(int id)
+        {
+            _studentService.DeleteStudent(id);  
+            _unitOfWork.Commit();
+            return Redirect("GetAllStudents");
+        }
 
     }
 }

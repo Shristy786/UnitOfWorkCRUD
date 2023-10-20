@@ -14,7 +14,8 @@ builder.Services.AddDbContext<StudentDBContext>(options =>
 });
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-builder.Services.AddScoped<IStudentService, StudentService>();  
+builder.Services.AddScoped<IStudentService, StudentService>();
+builder.Services.AddScoped<ICourseService, CourseService>();
 
 //Adding Automapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
